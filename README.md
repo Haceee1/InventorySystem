@@ -1,4 +1,4 @@
-# Inventory System using Tkinter
+# Inventory System 
 
 This is a simple inventory management system implemented using Tkinter in Python. It allows users to add, delete, edit, and search for items in an inventory.
 
