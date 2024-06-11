@@ -48,6 +48,8 @@ Once installed, you can run the `main.py` file to start the application.
 
 ### Importing Libraries
 
+This block imports necessary libraries for building the GUI application.
+
 ```python
 import tkinter as tk
 from tkinter import messagebox, font
@@ -55,6 +57,8 @@ from PIL import Image, ImageTk
 ```
 
 ### InventorySystem Class
+
+Defines the main class InventorySystem and its initialization method.
 
 ```python
 class InventorySystem:
@@ -64,12 +68,16 @@ class InventorySystem:
 
 ### Initializing GUI and Background Image
 
+Initializes the GUI components and sets a background image for the application window.
+
 ```python
 self.background_image = Image.open("Forest.jpg")
 # More initialization code...
 ```
 
 ### Creating UI Components
+
+Contains the method for creating all UI components such as labels, buttons, and entry fields.
 
 ```python
 def create_widgets(self):
@@ -78,12 +86,16 @@ def create_widgets(self):
 
 ### Scrolling Text
 
+Defines a method to animate scrolling text on the canvas.
+
 ```python
 def scroll_text(self):
     # Text scrolling animation code...
 ```
 
 ### Searching Items
+
+Defines a method for searching items based on user input.
 
 ```python
 def search_item(self, event):
@@ -92,12 +104,16 @@ def search_item(self, event):
 
 ### Adding Item Form
 
+Defines a method for creating a window to add new items.
+
 ```python
 def add_item_form(self):
     # Form for adding items code...
 ```
 
 ### Adding Item
+
+Defines a method for adding an item to the inventory.
 
 ```python
 def add_item(self):
@@ -106,11 +122,15 @@ def add_item(self):
 
 ### Removing Item
 
+Defines a method for removing selected items from the inventory.
+
 ```python
 def remove_item(self):
     # Removing item from inventory code...
 ```
 ### Refreshing Product List
+
+Defines a method for updating the product list based on search queries or modifications.
 
 ```python
 def refresh_product_list(self, query=""):
@@ -119,11 +139,15 @@ def refresh_product_list(self, query=""):
 
 ### Editing Item
 
+Defines a method for editing the details of an existing item.
+
 ```python
 def edit_item(self, index):
     # Editing item details code...
 ```
 ### Saving Edited Item
+
+Defines a method for saving the edited details of an item.
 
 ```python
 def save_item(self, index):
@@ -131,13 +155,24 @@ def save_item(self, index):
 ```
 ### Deleting Item
 
+Defines a method for deleting an item from the inventory.
+
 ```python
 def delete_item(self, index):
     # Deleting item from inventory code...
 ```
 ### Main Function
 
+Contains the main function to initialize the Tkinter application and start the event loop.
+
 ```python
 if __name__ == "__main__":
     # Main function code...
 ```
+
+## Conclusion
+
+With features such as item addition, deletion, editing, and searching, this inventory management system offers a comprehensive solution for efficiently managing inventory items. Users can access their inventory processes effectively, enhancing organization and tracking capabilities.
+
+
+
