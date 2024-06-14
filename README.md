@@ -169,49 +169,6 @@ Contains the main function to initialize the Tkinter application and start the e
 if __name__ == "__main__":
     # Main function code...
 ```
-
-## Installation
-
-### Installing Pillow
-
-Pillow is a Python Imaging Library that adds image processing capabilities to your Python interpreter.
-
-1. **Open your terminal or command prompt**.
-2. **Run the following command**:
-
-   ```bash
-   pip install Pillow
-   ```
-
-### Installing PyInstaller
-
-PyInstaller is a tool that converts Python applications into stand-alone executables, under Windows, Linux, and Mac OS X.
-
-1. **Open your terminal or command prompt**.
-2. **Run the following command**:
-
-   ```bash
-   pip install pyinstaller
-   ```
-
-### Verifying the Installation
-
-To ensure that both Pillow and PyInstaller are installed correctly, you can check their versions:
-
-1. **Check Pillow version**:
-
-   ```bash
-   python -m PIL --version
-   ```
-
-2. **Check PyInstaller version**:
-
-   ```bash
-   pyinstaller --version
-   ```
-
-If you see the version numbers without any errors, it means the installation was successful.
-
 ## Conclusion
 
 With features such as item addition, deletion, editing, and searching, this inventory management system offers a comprehensive solution for efficiently managing inventory items. Users can access their inventory processes effectively, enhancing organization and tracking capabilities.
