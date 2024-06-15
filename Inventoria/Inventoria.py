@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox, font
-from PIL import Image, ImageTk  
+from PIL import Image, ImageTk
 
 class InventorySystem:
     def __init__(self, root):
@@ -133,12 +133,17 @@ class InventorySystem:
         if serial and name and quantity and price and details:
             if any(item[0] == serial for item in self.inventory):
                 messagebox.showwarning("Warning", "Serial number already exists")
+                self.add_window.focus_set()
+            elif not quantity.isdigit() or not price.replace('.', '', 1).isdigit() or any(char.isalpha() for char in serial):
+                messagebox.showwarning("Warning", "Invalid input: Serial number, quantity, and price should not contain letters")
+                self.add_window.focus_set()
             else:
                 self.inventory.append((serial, name, int(quantity), float(price), details))
                 self.add_window.destroy()
                 self.refresh_product_list()
         else:
             messagebox.showwarning("Warning", "Please fill out all fields")
+            self.add_window.focus_set()
 
     def remove_item(self):
         selected_indexes = [i for i, v in enumerate(self.product_list) if v.get()]
@@ -160,23 +165,21 @@ class InventorySystem:
             self.product_list.append(tk.BooleanVar())
             tk.Checkbutton(self.product_list_frame, variable=self.product_list[-1], bg=self.product_list_frame.cget('bg')).grid(row=i+1, column=0, sticky='ew')
 
-            col_widths = [15, 25, 10, 15, 30, 20]
-            for j, (value, width) in enumerate(zip(item, col_widths)):
+            for j, (value, width) in enumerate(zip(item, [15, 25, 10, 20, 25])):
                 label = tk.Label(self.product_list_frame, text=value, borderwidth=0, relief="solid", width=width, anchor='w', font=self.custom_font, bg=self.product_list_frame.cget('bg'))
                 label.grid(row=i+1, column=j+1, sticky='ew')
-                label.bind("<Button-1>", lambda e, i=i: self.show_item_summary(filtered_inventory[i]))  # Bind click event to each label
+                label.bind("<Button-1>", lambda e, i=i: self.show_item_summary(filtered_inventory[i]))
 
-            # Frame for action buttons
             action_frame = tk.Frame(self.product_list_frame, bg=self.product_list_frame.cget('bg'))
             action_frame.grid(row=i+1, column=6, sticky='ew')
 
-            original_index = self.inventory.index(item)  # Index in the original inventory list
+            original_index = self.inventory.index(item)
             update_button = tk.Button(action_frame, text="Update", font=self.custom_font, bg="#187498", fg="white", command=lambda i=original_index: self.edit_item(i))
-            update_button.pack(side='left', fill='x', expand=True)  # Fill the horizontal space
+            update_button.pack(side='left', fill='x', expand=True)
 
             delete_button = tk.Button(action_frame, text="Delete", font=self.custom_font, bg="#EB5353", fg="white", command=lambda i=original_index: self.delete_item(i))
-            delete_button.pack(side='left', fill='x', expand=True)  # Fill the horizontal space
-            
+            delete_button.pack(side='left', fill='x', expand=True)
+
             action_frame.columnconfigure(0, weight=1)
 
     def show_item_summary(self, item):
@@ -227,11 +230,16 @@ class InventorySystem:
         details = self.details_entry_edit.get()
 
         if serial and name and quantity and price and details:
-            self.inventory[index] = (serial, name, int(quantity), float(price), details)
-            self.edit_window.destroy()
-            self.refresh_product_list()
+            if not quantity.isdigit() or not price.replace('.', '', 1).isdigit() or any(char.isalpha() for char in serial):
+                messagebox.showwarning("Warning", "Invalid input: Serial number, quantity, and price should not contain letters")
+                self.edit_window.focus_set()
+            else:
+                self.inventory[index] = (serial, name, int(quantity), float(price), details)
+                self.edit_window.destroy()
+                self.refresh_product_list()
         else:
             messagebox.showwarning("Warning", "Please fill out all fields")
+            self.edit_window.focus_set()
 
     def delete_item(self, index):
         del self.inventory[index]
@@ -242,12 +250,12 @@ if __name__ == "__main__":
     desired_width = 1150
     desired_height = 500
     root.geometry(f"{desired_width}x{desired_height}")
-    
+
     root.iconbitmap('InventoriaIcon.ico')
-    
+
     app = InventorySystem(root)
-    
+
     notice_label = tk.Label(root, text="© 2024 RazzCodes. All Rights Reserved.", font=("Century Gothic", 10), fg="gray")
-    notice_label.grid(row=10, column=0, columnspan=5, sticky='se', padx=30, pady=(0,30))
-    
+    notice_label.grid(row=10, column=0, columnspan=5, sticky='se', padx=30, pady=(0, 30))
+
     root.mainloop()
