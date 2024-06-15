@@ -10,6 +10,7 @@ This is a simple inventory management system implemented using Tkinter in Python
 4. [Usage](#usage)
 5. [License](#license)
 6. [Code Structure](#code-structure)
+7. [Conclusion](#conclusion)
 
 ## Introduction <a name="introduction"></a>
 
